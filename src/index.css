@@ -1,68 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    --background: #6E5C62;
+    --text-color: #FFFFFF; 
+    --dark-gray: #615458; 
+    --dark-brown: #4C4347; 
+    --green: #3AA394;
+    --yellow: #D3AD69; 
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+    background-color: var(--background);
+    font-family: "Mitr", sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* ---- Navbar ---- */
+.navbar {
+    margin-bottom: 3rem;
+    padding: .75rem 0;
+    display: flex;
+    justify-content: center;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.navbar h1 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+}
+
+
+/* ---- Guesses Grid ---- */
+.guessesGridContainer {
+    margin-bottom: 2rem;
+}
+.guessesGridContainer__row {
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.guessesGridContainer__box {
+    width: 2.41em;
+    height: 2.41em;
+    border: 5px solid var(--dark-brown);
+    border-radius: 5px;
+}
+
+.guessesGridContainer__emptyBox {
+    background-color: var(--dark-gray);
+    width: 2.41em;
+    height: 2.41em;
+    border: 5px solid var(--dark-gray);
+    border-radius: 5px;    
+}
+
+
+/* ---- Keyboard ---- */
+
+.keyboardContainer {
+    padding: 1rem;
+    height: min(100em/2.15,25vh);
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 3px;
+}
+
+.keyboardContainer__Key {
+    background-color: var(--dark-brown);
+    color: var(--text-color);
+    padding: .5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.keyboardContainer__Key:hover {
+    opacity: .8;
+}
+
+#key_enter {
+    width: auto;
+    grid-column: span 3;
+    border-radius: 8px;
+    margin-left: 1rem;
 }
