@@ -8,3 +8,4 @@ Navbar
 
 Funcionalidades 
     - salva onde parou mesmo que recarregue a pagina
+    - Usar uma api https://rapidapi.com/azizbergach/api/wordle-game-api1

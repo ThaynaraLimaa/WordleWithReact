@@ -1,15 +1,16 @@
 import { KeyboardGrid } from "./components/KeyboardGrid"
 import { Navbar } from "./components/Navbar"
 import { GuessesGrid } from "./components/GuessesGrid"
+import { GuessesProvider } from "./Context/WordToGuessContext"
 
 function App() {
 
   return (
-    <>
-      <Navbar></Navbar>
-      <GuessesGrid/>
-      <KeyboardGrid/>
-    </>
+    <GuessesProvider>
+      <Navbar />
+      <GuessesGrid />
+      <KeyboardGrid />
+    </GuessesProvider>
   )
 }
 

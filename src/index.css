@@ -13,8 +13,9 @@
     --text-color: #FFFFFF; 
     --dark-gray: #615458; 
     --dark-brown: #4C4347; 
-    --green: #3AA394;
-    --yellow: #D3AD69; 
+    --wrong-letter:#312A2C; 
+    --right-place: #3AA394;
+    --wrong-place: #D3AD69; 
 
 }
 
@@ -51,23 +52,50 @@ body {
 .guessesGridContainer__row {
     margin-bottom: 5px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    grid-template-columns: repeat(5, 3em);
+    height: 3em;
+    font-size: 1rem;
+
+    grid-gap: 5px;
 }
 
 .guessesGridContainer__box {
-    width: 2.41em;
-    height: 2.41em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    font-weight: bold;
+    font-size: 1.75rem;
+    line-height: 1em; 
+}
+
+.currentWord {
     border: 5px solid var(--dark-brown);
+    border-radius: 5px; 
+}
+
+.empty {
+    background-color: var(--dark-brown);
+    border: 5px solid var(--dark-brown);
+    border-radius: 5px; 
+}
+
+.right {
+    background-color: var(--right-place) !important;
+    border: 5px solid var(--right-place);
     border-radius: 5px;
 }
 
-.guessesGridContainer__emptyBox {
-    background-color: var(--dark-gray);
-    width: 2.41em;
-    height: 2.41em;
-    border: 5px solid var(--dark-gray);
-    border-radius: 5px;    
+.place {
+    background-color: var(--wrong-place);
+    border: 5px solid var(--wrong-place);
+    border-radius: 5px;
+}
+
+.wrong {
+    background-color: var(--wrong-letter);
+    border: 5px solid var(--wrong-letter);
+    border-radius: 5px;
 }
 
 
