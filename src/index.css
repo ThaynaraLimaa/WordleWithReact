@@ -28,11 +28,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 /* ---- Navbar ---- */
 .navbar {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     padding: .75rem 0;
     display: flex;
     justify-content: center;
@@ -44,6 +45,17 @@ body {
     color: var(--text-color);
 }
 
+
+.gameFeedback {
+    background-color: var(--right-place);
+    color: var(--text-color);
+    font-size: .95rem;
+    padding: .1rem .85rem;
+    border-radius: 5px;
+    position: absolute;
+    top: 3.2rem;
+
+}
 
 /* ---- Guesses Grid ---- */
 .guessesGridContainer {
@@ -67,11 +79,17 @@ body {
     font-weight: bold;
     font-size: 1.75rem;
     line-height: 1em; 
+
+    transition: all 500ms ease-in-out;
 }
 
 .currentWord {
     border: 5px solid var(--dark-brown);
     border-radius: 5px; 
+}
+
+.edit {
+    border-bottom: 8px solid var(--dark-brown) !important;
 }
 
 .empty {
