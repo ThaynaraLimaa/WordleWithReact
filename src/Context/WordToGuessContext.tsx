@@ -1,4 +1,5 @@
 import { ReactNode, createContext, useState } from "react"
+import { words } from "../data/words"
 
 type GuessesProviderProps = {
     children: ReactNode
@@ -11,19 +12,18 @@ type GuessesContextType = {
     guesses: string[][],
     current: number,
     feedBackMessage: string,
-    handleLetterButtons: (letter: string) => void
-    handleDelButton: () => void
+    handleLetterButtons: (letter: string) => void,
+    handleDelButton: () => void,
     handleEnterButton: () => void
 }
 
 export const GuessesContext = createContext({} as GuessesContextType)
 
 export function GuessesProvider({ children }: GuessesProviderProps) {
-    const wordToGuess = ['a', 'u', 'r', 'e', 'o'] // depois vai pegar a palavra dinamicamente
+    const [wordToGuess] = useState(getWord())
     const [guesses, setGuesses] = useState([[], [],[],[],[],[]] as GuessesType)  
     const [current, setCurrent] = useState(0);
     const [feedBackMessage, setFeedbackMessage] = useState('')
-
 
     const handleLetterButtons = (letter: string) => {
         setGuesses(prevGuesses => {
@@ -59,7 +59,16 @@ export function GuessesProvider({ children }: GuessesProviderProps) {
             setTimeout(() => {
                 setFeedbackMessage('')
             }, 3000);
-            setFeedbackMessage('a palavra deve ter 5 letras')
+            setFeedbackMessage('word must have 5 letters')
+            return; 
+        }
+
+        if(!words.includes(guesses[current].join(''))) {
+            setTimeout(() => {
+                setFeedbackMessage('')
+            }, 3000);
+
+            setFeedbackMessage(`I don't know this word`)
             return; 
         }
         
@@ -68,7 +77,6 @@ export function GuessesProvider({ children }: GuessesProviderProps) {
             const currentGuess = [...newGuess[current]] 
 
             if(check(wordToGuess, currentGuess)) {
-                alert('Acertou')
                 newGuess[current] = currentGuess
                 return newGuess
             }
@@ -82,14 +90,12 @@ export function GuessesProvider({ children }: GuessesProviderProps) {
                 return prev + 1
             })
         } else {
-            setFeedbackMessage('Parabens!')
+            setFeedbackMessage('Nice!')
             setCurrent(10)
         }
 
         if(current == 5) {
-            setFeedbackMessage(`Acabou as chances, a palavra era '${wordToGuess.join('')}'`)
-        } else {
-            console.log(current)
+            setFeedbackMessage(`You lost, the word was '${wordToGuess.join('')}'`)
         }
        
     }
@@ -99,6 +105,12 @@ export function GuessesProvider({ children }: GuessesProviderProps) {
             {children}
         </GuessesContext.Provider>
     )
+}
+
+function getWord(): string[] {
+    const ind = Math.floor(Math.random() * words.length)
+    const word = words[ind]
+    return word.split('')
 }
 
 function check(wordToGuess: string[], word: string[]): boolean {
