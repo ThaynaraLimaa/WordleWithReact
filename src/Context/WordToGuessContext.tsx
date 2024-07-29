@@ -95,7 +95,8 @@ export function GuessesProvider({ children }: GuessesProviderProps) {
         }
 
         if(current == 5) {
-            setFeedbackMessage(`You lost, the word was '${wordToGuess.join('')}'`)
+            setFeedbackMessage(`You lost, the word was '${wordToGuess.join('')}'. Refresh to try again.`)
+            setCurrent(10)
         }
        
     }

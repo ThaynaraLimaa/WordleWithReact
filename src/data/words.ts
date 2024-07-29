@@ -49,5 +49,5 @@ export const words = [
     "urban", "usage", "usual", "vague", "valid", "value", "video", "virus", "visit", "vital",
     "voice", "waste", "watch", "water", "wheel", "where", "which", "while", "white", "whole",
     "whose", "woman", "women", "world", "worry", "worse", "worst", "worth", "would", "wound",
-    "write", "wrong", "wrote", "yield", "young", "youth",
+    "write", "wrong", "wrote", "yield", "young", "youth", "hello", 
 ]
